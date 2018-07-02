@@ -7,31 +7,87 @@
 // Example: 5! = 5 x 4 x 3 x 2 x 1 = 120
 // factorial(5); // 120
 var factorial = function(n) {
-};
+	if (n < 0) {
+		return null;
+	} else if (n == 0) {
+		return 1;
+	} else {
+		return n * factorial(n-1);
+	}
+}
 
 // 2. Compute the sum of an array of integers.
 // sum([1,2,3,4,5,6]); // 21
 var sum = function(array) {
+	if (array.length === 0) {
+		return 0;
+	}
+	return array[0] + sum(array.slice(1));
 };
 
 // 3. Sum all numbers in an array containing nested arrays.
 // arraySum([1,[2,3],[[4]],5]); // 15
 var arraySum = function(array) {
+	var sum = 0;
+	for (var i = 0; i < array.length ; i++) {
+		var currItem = array[i];
+		if (!Array.isArray(currItem)) {
+              sum += currItem;
+			} else {
+				sum += arraySum(currItem);
+			}
+		}
+    return sum;
 };
 
 // 4. Check if a number is even.
 var isEven = function(n) {
+	if (n < 0){
+		n = Math.abs(n);
+	}
+	if (n === 1) {
+		return false;
+	} else if (n === 0) {
+		return true;
+	} 
+	return isEven(n-2);
 };
 
 // 5. Sum all integers below a given integer.
 // sumBelow(10); // 45
 // sumBelow(7); // 21
 var sumBelow = function(n) {
+  var sum = 0;
+  if (n < 0) {
+    if (n === 0) {
+	  	return 0;
+	  } else if ( n === -1) {
+	    return 0;
+	  } else if ( n === -2) {
+	    return -1;
+	  } else {
+	  	sum += n + 1 
+	  	sum += sumBelow(n+1);
+	  }
+  } else {
+	  if (n === 0) {
+	  	return 0;
+	  } else if ( n === 1) {
+	    return 0;
+	  } else if ( n === 2) {
+	    return 1;
+	  } else {
+	  	sum += n - 1 
+	  	sum += sumBelow(n-1);
+	  }
+  }
+  return sum;
 };
 
 // 6. Get the integers within a range (x, y).
 // range(2,9); // [3,4,5,6,7,8]
 var range = function(x, y) {
+	
 };
 
 // 7. Compute the exponent of a number.
@@ -251,4 +307,24 @@ var mergeSort = function(array) {
 // console.log(obj2); // {a:1,b:{bb:{bbb:2}},c:3}
 // obj1 === obj2 // false
 var clone = function(input) {
+  if (Array.isArray(input)) {
+	var output = [];
+	for (var i = 0; i < input.length; i++) {
+		if (Array.isArray(input[i]) ) {
+			clone(input[i]);
+		} else if (typeof input[i] === "object") {
+
+		} else {
+          a
+		}
+	}
+  }
+
+  if (typeof input === "obj") {
+    var output = {};
+
+  }
+
+
+ return output;
 };

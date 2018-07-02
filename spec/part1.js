@@ -266,6 +266,7 @@
 
       it('should return a number', function() {
         expect(sumBelow(10)).to.be.a('number');
+        debugger;
       });
 
       it('should return the sum of non-negative integers below given integer', function() {
