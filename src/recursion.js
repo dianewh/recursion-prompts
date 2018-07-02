@@ -87,7 +87,18 @@ var sumBelow = function(n) {
 // 6. Get the integers within a range (x, y).
 // range(2,9); // [3,4,5,6,7,8]
 var range = function(x, y) {
-	
+	//need to rewrite for a recursive answer
+	//needs to work from high to low range
+	var output = [];
+    var num = x+1;
+    var helperFunc = function(num) {
+	    if (num > x && num < y) {
+			output.push(num);
+			helperFunc(num + 1)
+	    } 
+    }
+    helperFunc(x+1);
+	return output;
 };
 
 // 7. Compute the exponent of a number.
